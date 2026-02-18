@@ -1,9 +1,4 @@
-Perfect — this is one of those cases where **shorter actually makes it more useful**.
-Think of this file as a *mental anchor*, not documentation.
 
-Here is the distilled version:
-
----
 
 # Rust Userland Systems Sandbox
 
@@ -115,11 +110,3 @@ just miri
 * binary parsing
 * allocators
 * resource tracking
-
-In other words:
-
-I’m learning to think like **a compiler and a CPU**.
-
-When this feels easy → kernel development will too.
-
----
