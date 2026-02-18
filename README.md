@@ -1,62 +1,125 @@
-here's some userland ideas for rust: Examples that are perfect next steps after memmap:
+Perfect — this is one of those cases where **shorter actually makes it more useful**.
+Think of this file as a *mental anchor*, not documentation.
 
-ELF header parser (amazing Rust learning)
+Here is the distilled version:
 
-Page table entry struct (bitfields + flags)
+---
 
-Simple bump allocator
+# Rust Userland Systems Sandbox
 
-Simple slab allocator
+**Purpose:**
+Learn ownership, memory, and invariants in userland *before* writing a kernel.
 
-Packet parser (fake Ethernet/IP header)
+Rule:
 
-Virtual file table (inode style
+> If I can’t safely implement and test it here, I don’t understand it enough for kernel space.
 
+This repo teaches **how the computer actually works**, not just Rust.
 
+---
 
-The strategy is to follow the brown rust book at: https://rust-book.cs.brown.edu/ch04-02-references-and-borrowing.html
-do some exercises in it, and do turing complete
+## What I Do
 
-and also do stringent testing to get better at rust
+Follow Brown Rust Book:
+[https://rust-book.cs.brown.edu/ch04-02-references-and-borrowing.html](https://rust-book.cs.brown.edu/ch04-02-references-and-borrowing.html)
 
-you can also do test on save 
-: heres that 
+For each concept:
 
+**read → implement → test → fix → repeat**
 
-Spec: Instant Feedback Test Loop (Rust)
+Also play *Turing Complete* for hardware intuition.
 
-Goal
-Make tests run automatically on every file save so failures show up immediately.
+---
 
-Non-Goals
-	•	CI setup, coverage, benchmarks
-	•	Linting/formatting rules beyond basics
+## Projects (Order Matters)
 
-Requirements
-	•	One command starts a continuous test runner for the current crate/workspace.
-	•	Re-runs tests on file changes (src/, tests/, Cargo.toml).
-	•	Clear, readable output (failed tests obvious).
-	•	Fast iteration options:
-	•	run all tests
-	•	run a single test by name
-	•	run unit tests only vs integration tests
+1. Memory map iterator
+2. ELF header parser
+3. Page table entry (bitflags)
+4. Bump allocator
+5. Slab allocator
+6. Packet parser (Ethernet/IP)
+7. Virtual file table (inode style)
 
-CLI Commands
-	•	Install:
-	•	cargo install cargo-watch
-	•	Run all tests on change:
-	•	cargo watch -x test
-	•	Run one test on change:
-	•	cargo watch -x "test <test_name>"
-	•	Run one module/test file (example):
-	•	cargo watch -x "test raw::tests::push_entry_writes_expected_wire_format_for_minimal"
+If I can write these confidently → I’m ready for kernel subsystems.
 
-Dev Workflow
-	•	Keep watcher running in a dedicated terminal/tmux pane.
-	•	Edit code → save → watcher output is the source of truth.
-	•	When a failure occurs, fix until green before moving on.
+---
 
-Acceptance Criteria
-	•	Saving any Rust source file triggers a test run.
-	•	A failing test is visible within seconds.
-	•	Running a single targeted test is possible without changing code.
+## Testing Rule (Most Important Part)
+
+Testing is the real skill I’m learning.
+
+Kernel developers debug with **invariants**, not print statements.
+
+Always keep a watcher running:
+
+```
+cargo install cargo-watch
+cargo watch -x test
+```
+
+Workflow:
+
+**save file → tests run → fix immediately**
+
+Never continue while tests are red.
+
+Run a single test:
+
+```
+cargo watch -x "test <name>"
+```
+
+---
+
+## Commands I’ll Forget
+
+Run all tests:
+
+```
+just test
+```
+
+Run one:
+
+```
+just t read_one
+```
+
+Auto-test on save:
+
+```
+just watch
+```
+
+Fast checks:
+
+```
+just check
+just clippy
+```
+
+Deep debugging:
+
+```
+just miri
+```
+
+---
+
+## What This Actually Teaches
+
+* memory layout
+* aliasing
+* lifetimes
+* binary parsing
+* allocators
+* resource tracking
+
+In other words:
+
+I’m learning to think like **a compiler and a CPU**.
+
+When this feels easy → kernel development will too.
+
+---
