@@ -19,6 +19,9 @@ Where most of the rust thoughts go
 Follow Brown Rust Book:
 [https://rust-book.cs.brown.edu/ch04-02-references-and-borrowing.html](https://rust-book.cs.brown.edu/ch04-02-references-and-borrowing.html)
 
+Rust for rustasceans:
+[rust for rustasceans](https://github.com/rustaccato/road-to-being-master-rustacean/blob/main/Rust%20for%20Rustaceans.pdf)
+
 For each concept:
 
 **read → implement → test → fix → repeat**
