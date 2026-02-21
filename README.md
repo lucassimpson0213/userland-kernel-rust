@@ -4,19 +4,23 @@
 
 **Purpose:**
 Learn ownership, memory, and invariants in userland *before* writing a kernel.
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
-Rule:
+# Wiki
+Where most of the rust thoughts go
+[Wiki](https://github.com/lucassimpson0213/sys-userland-kernel-rust/wiki)
+----------------------------------------------------------------------------
+----------------------------------------------------------------------------
 
-> If I can’t safely implement and test it here, I don’t understand it enough for kernel space.
-
-This repo teaches **how the computer actually works**, not just Rust.
-
----
 
 ## What I Do
 
 Follow Brown Rust Book:
 [https://rust-book.cs.brown.edu/ch04-02-references-and-borrowing.html](https://rust-book.cs.brown.edu/ch04-02-references-and-borrowing.html)
+
+Rust for rustasceans:
+[rust for rustasceans](https://github.com/rustaccato/road-to-being-master-rustacean/blob/main/Rust%20for%20Rustaceans.pdf)
 
 For each concept:
 
